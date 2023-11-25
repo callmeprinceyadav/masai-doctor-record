@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+  }
+  div {
+    display: flex;
+    /* justify-content: space-around; */
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  form {
+    margin: 0 auto;
+    margin-top: 40px;
+    width: 25%;
+    /* height: 10%; */
+    /* margin-bottom: 20vh; */
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 30px;
+    /* border: 1px solid; */
+  }
+  label {
+  font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-left: 10px;
+  }
+  table td,
+  table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  h1 {
+      margin-top: 20px;
+    text-align: center;
+    font-size: 50px;
+    text-transform: uppercase;
+    font-family: monospace;
+    color: #2b619e;
+    text-decoration: underline;
+  }
+  
+  table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #0468aa;
+      color: white;
+      text-align: center;
+    
+    }
+    #filter{
+      /* position: absolute; */
+      /* left: 170px;
+      top: 90vh; */
+      margin-top: 55px;
+      width: 10%;
+      height: 5%;
+    }
+  
+    #doctor_id,#department,#experience,#email,#mobile,#name, #specialization{
+      margin: 10px;
+    }
+    input[type=submit]{
+      margin: 10px;
+    }
+    label{
+      font-size: 16px;
+    }
+  
+    input[type="text"],
+  select,
+  textarea {
+    width: 100%;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+    resize: vertical;
+  }
+  
+  input[type="submit"] {
+      background-color: #2b619e;
+      color: white;
+      padding: 10px 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 20px;
+      margin: 10px;
+    }
+  
+    input[type="submit"]:hover {
+      background-color: #022d5e;
+      /* margin-top: 20px; */
+    }
+  
+    #employeeID,#experience,#mobile, #email{
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      /* margin-top: 6px; */
+      /* margin-bottom: 16px; */
+      resize: vertical;
+    }
+    table tr:nth-child(even) {
+      background-color: #8caacf;
+    }
