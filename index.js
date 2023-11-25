@@ -1,83 +1,81 @@
-// // fill in javascript code here
+// fill in javascript code here
 
-// // fill in javascript code here
-
-
-let form = document.querySelector('form');
-let Name = document.getElementById('name');
-let docID = document.getElementById('doctor_id');
-let depart = document.getElementById('specialization');
-let exp = document.getElementById('experience');
-let email = document.getElementById('email');
-let mob = document.getElementById('mobile');
+// fill in javascript code here
+let myForm = document.querySelector('form');
 let tbody = document.querySelector('tbody');
-let filterSelect = document.getElementById('filter'); // Add this line
+let filterSelect = document.getElementById('filter');
 
-let server = [];
-let job = "";
 
-form.addEventListener('submit', function (ele) {
-  ele.preventDefault();
+myForm.addEventListener('submit' , function(e){
+    e.preventDefault();
 
-  let data = {};
-  data.name1 = Name.value;
-  data.docID = docID.value;
-  data.dept = depart.value;
-  data.exp = exp.value;
+    let Name = document.getElementById('name').value;
+    let DoctorID = document.getElementById('doctor_id').value;
+    let Specialization = document.getElementById('specialization').value;
+    let Experience = document.getElementById('experience').value;
+    let Email = document.getElementById('email').value;
+    let Mobile = document.getElementById('mobile').value;
+    
 
-  if (exp.value > 5) {
-    job = "Senior";
-  } else if (exp.value >= 2 && exp.value <= 5) {
-    job = "Junior";
-  } else if (exp.value <= 1) {
-    job = "Trainee";
-  }
+    // console.log(name,employeeID,department,experience,email,mobile)
 
-  data.role = job;
-  data.email = email.value;
-  data.mbl = mob.value;
+    let Role;
+    if(Experience > 5 ){
+        Role = "Senior";
+    }
+    else if(Experience >= 2 && Experience <= 5  ){
+        Role = "Junior";
+    }
+    else{
+        Role = "Trainee";
+    }
+    
+    let tbody = document.querySelector("tbody");
+    let row = document.createElement("tr");
 
-  server.push(data);
-  form.reset();
-  tbody.innerHTML = null;
+    let data = [Name,DoctorID,Specialization,Experience,Email,Mobile,Role]
 
-  server.map((ele, ind) => {
-    let row = document.createElement('tr');
-    let td1 = document.createElement('td')
-    let td2 = document.createElement('td')
-    let td3 = document.createElement('td')
-    let td4 = document.createElement('td')
-    let td5 = document.createElement('td')
-    let td6 = document.createElement('td')
-    let td7 = document.createElement('td')
-    let td8 = document.createElement('td')
+    data.forEach((ele)=>{
 
-    td1.innerText = ele.name1
-    td2.innerText = ele.docID
-    td3.innerText = ele.dept
-    td4.innerText = ele.exp
-    td5.innerText = ele.email
-    td6.innerText = ele.mbl
-    td7.innerText = ele.role
-    td8.innerText = "Delete"
-    td8.style.backgroundColor = "red"
+        let td = document.createElement("td");
+        td.innerText = ele
+        row.appendChild(td);
+        
 
-    row.append(td1, td2, td3, td4, td5, td6, td7, td8)
-    tbody.append(row)
-
-    td8.addEventListener('click', function () {
-      server.splice(ind, 1);
-      row.remove()
     })
-  })
+
+    tbody.appendChild(row);
+
+    myForm.reset()
+    
+
+    let deleteTd = document.createElement('td');
+    let deletBtn = document.createElement('button');
+    deletBtn.innerText = "Delete";
+    deletBtn.style.backgroundColor = "red"
+
+    deletBtn.addEventListener('click',function(){
+        tbody.removeChild(row);
+    })
+
+    deleteTd.appendChild(deletBtn);
+    row.appendChild(deleteTd);
+
+
 })
 
-filterSelect.addEventListener("change", function () {
-  const selectedSpecialization = filterSelect.value.toLowerCase();
-  const rows = tbody.querySelectorAll("tr");
 
-  rows.forEach((row) => {
-    const rowSpecialization = row.children[2].textContent.toLowerCase();
-    row.style.display = rowSpecialization === selectedSpecialization || selectedSpecialization === "" ? "" : "none";
+
+filterSelect.addEventListener("change", function () {
+    const selectedSpecialization = filterSelect.value.toLowerCase();
+    const rows = tbody.querySelectorAll("tr");
+  
+    rows.forEach((row) => {
+      const rowSpecialization = row.children[2].textContent.toLowerCase();
+      if (selectedSpecialization === "" || rowSpecialization === selectedSpecialization) {
+        row.style.display = "";
+      } else {
+        row.style.display = "none";
+      }
+    });
   });
-});
